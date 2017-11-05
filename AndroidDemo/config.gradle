@@ -1,0 +1,16 @@
+/**
+ * Description: global config
+ * <p>
+ * Create by ttdevs
+ * 2017-10-31 Library
+ * https://github.com/ttdevs
+ */
+
+ext {
+    nexusConfig = [
+            repository: 'http://ttdevs.vicp.cc:9020/repository/ttdevs-releases/',
+            userName  : 'Reader',
+            password  : 'ttdevs'
+    ]
+}
+

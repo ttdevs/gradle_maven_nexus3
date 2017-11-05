@@ -1,0 +1,30 @@
+apply plugin: 'maven'
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            // snapshotRepository
+            repository(url: nexusConfig.repository) {
+                authentication(userName: nexusUploader, password: nexusUploaderPwd)
+            }
+
+            pom.project {
+                version project.version
+                artifactId project.name
+                groupId 'com.ttdevs.lib'
+                packaging 'aar'
+                description project.description
+            }
+        }
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.sourceFiles
+    }
+
+    artifacts {
+        archives androidSourcesJar
+    }
+}
